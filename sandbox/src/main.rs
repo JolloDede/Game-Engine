@@ -1,8 +1,20 @@
 extern crate game_engine_lib;
 
-use game_engine_lib::Print;
+use std::sync::Arc;
+
+use game_engine_lib::{application::AppTratis, log::info};
 
 fn main() {
-    println!("Hello, world!");
-    print("Test".to_string());
+    info("test");
+
+    let app = create_application();
+    app.run();
 }
+
+fn create_application() -> impl AppTratis {
+    return Sandbox();
+}
+
+struct Sandbox();
+
+impl AppTratis for Sandbox {}
